@@ -201,6 +201,7 @@ class CondicionesController extends BaseController {
 					$condicion->valor_condicion = $data['marcador_'.$marcador->id.'_1'];
 					$condicion->limite_superior = $data['limite_superior_'.$marcador->id.'_1'];
 					$condicion->limite_inferior = $data['limite_inferior_'.$marcador->id.'_1'];
+					$condicion->id_user_updated = Auth::user()->id;
 					$condicion->save();	
 				}
 				$marcador->trimestre_marcador = '2';
@@ -225,6 +226,7 @@ class CondicionesController extends BaseController {
 				$condicion->valor_condicion = $data['marcador_'.$marcador->id.''];
 				$condicion->limite_superior = $data['limite_superior_'.$marcador->id.''];
 				$condicion->limite_inferior = $data['limite_inferior_'.$marcador->id.''];
+				$condicion->id_user_updated = Auth::user()->id;
 				$condicion->save();	
 			}
 			

@@ -56,6 +56,7 @@ class Datos_CitasController extends BaseController {
 		$citas->id_institucion = $data['id_institucion'];
 		$citas->tipo_cita = $data['tipo_cita'];
 		$citas->id_cita_referencia = $data['id_cita_referencia'];
+		$citas->id_user_created = Auth::user()->id;
 		$citas->save();
 		//Se obtiene el ultimo id de las citas que fue la que se almaceno previamente
 		$id_cita = Cita::all()->last()->id;
@@ -218,6 +219,7 @@ class Datos_CitasController extends BaseController {
 		$citas->riesgo_fap = $data['riesgo_fap'];
 		$citas->tipo_cita = $data['tipo_cita'];
 		$citas->id_cita_referencia = $data['id_cita_referencia'];
+		$citas->id_user_updated = Auth::user()->id;
 		$citas->save();
 		if($data['tipo_cita'] == '2' AND $data['id_cita_referencia'] != '0'){
 			$cita = Cita::find($data['id_cita_referencia']);
