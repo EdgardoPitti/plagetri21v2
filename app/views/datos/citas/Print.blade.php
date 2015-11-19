@@ -85,18 +85,15 @@
 				<th width="80px">Resultados</th>
 				<th width="50px">MoM</th>
 				<th width="80px">Corr. Lineal</th>
-				<th width="80px">Corr. Exp.</th>
-				<th width="50px">Limite</th>				
+				<th width="80px">Corr. Exp.</th>				
 			</tr>
 			@foreach($marcadores as $marcador)
-			@if($marcador->positivo == 0) {{--*/$color = '#5cb85c';/*--}} @elseif($marcador->positivo == -1){{--*/$color = '#d9534f';/*--}} @elseif($marcador->positivo == -2) {{--*/$color = 'white';/*--}} @else {{--*/$color = '#f0ad4e';/*--}}	@endif
-			<tr align="center" style="background:{{$color}};">
+			<tr align="center">
 				<td>{{ Marcador::where('id', $marcador->id_marcador)->first()->marcador }}</td>
 				<td>{{ $marcador->valor }} @if(!empty(Unidad::where('id', $marcador->id_unidad)->first()->unidad))<p style="font-size:10px;font-style:italic;">{{  Unidad::where('id', $marcador->id_unidad)->first()->unidad }}</p>@endif</td>
 				<td>{{ $marcador->mom }}</td>
 				<td>{{ $marcador->corr_peso_lineal }}</td>
 				<td>{{ $marcador->corr_peso_exponencial }}</td>
-				<td>@if($marcador->positivo == 0) Normal @elseif($marcador->positivo == -1)	Bajo @elseif($marcador->positivo == -2) No Definido @else Alto	@endif</td>
 			</tr>
 			@endforeach
 		</table>
